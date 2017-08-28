@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="dangmianfu_demo_java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ibs/aliPay/dangmianfu_demo_java.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/ibs/aliPay/dangmianfu_demo_java.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ibs/aliPay/dangmianfu_demo_java.jar!/com/alipay/api" />
+    </SOURCES>
+  </library>
+</component>

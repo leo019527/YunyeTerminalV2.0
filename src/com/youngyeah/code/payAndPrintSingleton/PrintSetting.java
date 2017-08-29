@@ -1,5 +1,6 @@
 package com.youngyeah.code.payAndPrintSingleton;
 
+import com.youngyeah.code.staticveriable.StaticVeriables;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.poi.POIXMLDocument;
 import org.apache.poi.hslf.usermodel.HSLFSlide;
@@ -33,6 +34,32 @@ public class PrintSetting {
         end = pages;
         copys = 1;
         doublepages = false;
+    }
+
+    private void log(String cmd)
+    {
+    }
+
+    public void print() {
+        String path = file.getPath();
+        Runtime runtime = Runtime.getRuntime();
+        String com = "2Printer -s " + path + " -papersize 9 ";
+        if (this.doublepages) {
+            com += "-duplex vertical ";
+        }
+        com += "-copies " + this.copys;
+
+        com += " -pagerange " + this.start + "-" + this.end;
+        System.out.println(com);
+        try {
+            runtime.exec(com);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int paper = pages*copys;
+        if(doublepages)
+            paper = (paper+1)/2;
+        StaticVeriables.getInstance().decreasePaper(paper);
     }
 
     //<editor-fold desc="get-set Function">

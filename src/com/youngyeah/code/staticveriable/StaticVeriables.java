@@ -10,6 +10,15 @@ public class StaticVeriables {
     private JLabel remainingPaper;
     private int remainingPapers;
     private File choosenFile;
+    private int USBDesign2Choosen;
+
+    public int getUSBDesign2Choosen() {
+        return USBDesign2Choosen;
+    }
+
+    public void setUSBDesign2Choosen(int USBDesign2Choosen) {
+        this.USBDesign2Choosen = USBDesign2Choosen;
+    }
 
     public File getChoosenFile() {
         return choosenFile;

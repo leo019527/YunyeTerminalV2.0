@@ -10,5 +10,6 @@
     <orderEntry type="library" name="POI" level="project" />
     <orderEntry type="library" name="pdfbox" level="project" />
     <orderEntry type="library" name="dangmianfu_demo_java" level="project" />
+    <orderEntry type="library" name="javax.mail-1.6.0" level="project" />
   </component>
 </module>

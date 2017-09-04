@@ -131,9 +131,7 @@ class DirectPrintActionListener implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        File choosenFile = StaticVeriables.getInstance().getChoosenFile();
-        Factory.getInstance().getPrintSettingInstance().setFile(choosenFile);
-        //TODO:打开下一个界面
+        new USBDesign3();
         this.jFrame.dispose();
     }
 }

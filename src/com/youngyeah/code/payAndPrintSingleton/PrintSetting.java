@@ -102,6 +102,7 @@ public class PrintSetting {
                     System.out.println("文件类型错误");
                     break;
             }
+            System.out.println(pages);
         }catch (IOException e)
         {
             e.printStackTrace();

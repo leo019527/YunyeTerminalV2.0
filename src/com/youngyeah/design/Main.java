@@ -36,7 +36,6 @@ public class Main extends JFrame {
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.286),
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.269),
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.101));
-        //TODO：USB打印
         USBPrint.addActionListener(new USBActionListener(label));
         label.add(USBPrint);
 

@@ -38,6 +38,7 @@ public class PrintSetting {
 
     private void log(String cmd)
     {
+        //TODO：添加日志文件
     }
 
     public void print() {
@@ -107,6 +108,12 @@ public class PrintSetting {
         {
             e.printStackTrace();
         }
+    }
+
+    public void setFile(File file,int pages)
+    {
+        this.file = file;
+        this.pages = pages;
     }
 
     public boolean isAll() {

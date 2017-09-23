@@ -34,43 +34,45 @@ public class linkClient {
             outputStream.writeUTF("getfiles");
             outputStream.writeUTF(verify);
             int state = inputStream.readInt();
-            if(state == 1)
-            {
-                JOptionPane.showMessageDialog(null,"接收文件中","信息窗口",JOptionPane.INFORMATION_MESSAGE);
-                //文件名
-                String name = inputStream.readUTF();
-                File file = new File("D:\\" + name);
-                FileOutputStream fout = new FileOutputStream(file);
-                //打印信息 双面\001页数\001份数
-                String info = inputStream.readUTF();
-                String[] split = info.split("\001");
-                boolean isdouble = split[0].equals("1") ? true:false;
-                int pages = Integer.parseInt(split[1]);
-                int copies = Integer.parseInt(split[2]);
-                //设置打印信息
-                PrintSetting printSettingInstance = Factory.getInstance().getPrintSettingInstance();
-                printSettingInstance.setFile(file,pages);
-                printSettingInstance.setDoublepages(isdouble);
-                printSettingInstance.setCopys(copies);
-                printSettingInstance.setAll(true);
-                //接收文件
-                byte[] inputByte = new byte[1024];
-                System.out.println("开始接收数据...");
-                int length=0;
-                while (true) {
-                    if (inputStream != null) {
-                        length = inputStream.read(inputByte, 0, inputByte.length);
+            if(state == 1) {
+//                JOptionPane.showMessageDialog(null,"接收文件中","信息窗口",JOptionPane.INFORMATION_MESSAGE);
+                int i = inputStream.readInt();
+                for(int j=0;j<i;j++){
+                    //文件名
+                    String name = inputStream.readUTF();
+                    File file = new File("D:\\" + name);
+                    FileOutputStream fout = new FileOutputStream(file);
+                    //打印信息 双面\001页数\001份数
+                    String info = inputStream.readUTF();
+                    String[] split = info.split("\001");
+                    boolean isdouble = split[0].equals("1") ? true : false;
+                    int pages = Integer.parseInt(split[1]);
+                    int copies = Integer.parseInt(split[2]);
+                    //设置打印信息
+                    PrintSetting printSettingInstance = Factory.getInstance().getPrintSettingInstance();
+                    printSettingInstance.setFile(file, pages);
+                    printSettingInstance.setDoublepages(isdouble);
+                    printSettingInstance.setCopys(copies);
+                    printSettingInstance.setAll(true);
+                    //接收文件
+                    byte[] inputByte = new byte[1024];
+                    System.out.println("开始接收数据...");
+                    int length = 0;
+                    while (true) {
+                        if (inputStream != null) {
+                            length = inputStream.read(inputByte, 0, inputByte.length);
+                        }
+                        if (length == -1) {
+                            break;
+                        }
+                        System.out.println(length);
+                        fout.write(inputByte, 0, length);
+                        fout.flush();
                     }
-                    if (length == -1) {
-                        break;
-                    }
-                    System.out.println(length);
-                    fout.write(inputByte, 0, length);
-                    fout.flush();
+                    System.out.println("完成接收");
+                    fout.close();
+                    printSettingInstance.print();
                 }
-                System.out.println("完成接收");
-                fout.close();
-                printSettingInstance.print();
             }
             else if(state == 2)
             {
@@ -83,5 +85,10 @@ public class linkClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        linkClient instance = linkClient.getInstance();
+        instance.getFile("159367");
     }
 }

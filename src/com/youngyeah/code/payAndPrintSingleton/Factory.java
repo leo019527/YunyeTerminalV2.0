@@ -9,8 +9,11 @@ public class Factory {
 
     private PrintSetting printSettingInstance;
 
+    private linkClient linkClient;
+
     private Factory() {
         this.printSettingInstance = new PrintSetting();
+        this.linkClient = linkClient.getInstance();
     }
 
     public static Factory getInstance(){
@@ -19,5 +22,9 @@ public class Factory {
 
     public PrintSetting getPrintSettingInstance() {
         return printSettingInstance;
+    }
+
+    public linkClient getlinkClient(){
+        return linkClient;
     }
 }

@@ -24,10 +24,10 @@ public class Res {
 
 
     public Res() {
-        pre = new File[2];
+        pre = new File[3];
         pre[0] = new File("C:\\");
         pre[1] = new File("D:\\");
-//        pre[2] = new File("E:\\");
+        pre[2] = new File("E:\\");
         count = pre.length;
         System.out.println("获取原有的盘符数量："+count);
     }

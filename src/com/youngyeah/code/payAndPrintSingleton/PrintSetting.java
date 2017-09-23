@@ -50,7 +50,9 @@ public class PrintSetting {
         }
         com += "-copies " + this.copys;
 
-        com += " -pagerange " + this.start + "-" + this.end;
+        if(this.all == false) {
+            com += " -pagerange " + this.start + "-" + this.end;
+        }
         System.out.println(com);
         try {
             runtime.exec(com);

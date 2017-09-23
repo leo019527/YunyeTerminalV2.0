@@ -1,8 +1,10 @@
 package com.youngyeah.design;
 
 import com.youngyeah.code.createcomponents.Create;
+import com.youngyeah.code.staticveriable.StaticVeriables;
 import com.youngyeah.code.usb.Res;
 import com.youngyeah.code.usb.USBMain;
+import com.youngyeah.design.online.onlineIndex;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +47,7 @@ public class Main extends JFrame {
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.471),
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().width * 0.269),
                 (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.101));
-        OnlinePrint.addActionListener(null);
+        OnlinePrint.addActionListener(new onlineActionListener());
         label.add(OnlinePrint);
 
         //剩余纸张
@@ -59,6 +61,7 @@ public class Main extends JFrame {
                 (int)(Toolkit.getDefaultToolkit().getScreenSize().height*0.068));
         remaining.setText("剩余纸张：500 张");
         label.add(remaining);
+        StaticVeriables.getInstance().setRemainingPaper(remaining);
 
         //联系我们
         JButton ContectUS = Create.CreateButton("pic/main/main_contactus.png",
@@ -241,3 +244,12 @@ class removeAfromBMouseListener implements MouseListener
     }
 }
 //</editor-fold>
+
+class onlineActionListener implements ActionListener
+{
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new onlineIndex();
+    }
+}
